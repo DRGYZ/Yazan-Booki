@@ -1,10 +1,8 @@
 {
-  "name": "project-2",
-  "version": "1.0.0",
+  "name": "booki-marseille",
   "private": true,
-  "dependencies": {
-    "parcel-bundler": "^1.6.1"
-  },
-  "scripts": {},
-  "devDependencies": {}
+  "type": "module",
+  "scripts": {
+    "verify": "node --test"
+  }
 }
