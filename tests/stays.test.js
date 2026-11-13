@@ -24,3 +24,13 @@ test('each stay has both sizes of its local image', async () => {
     await access(new URL(base + '-small.webp', import.meta.url));
   }
 });
+
+test('search matches neighborhood and note metadata cleanly', () => {
+  assert.deepEqual(selectStays({ ...defaults, query: 'corniche' }).map((stay) => stay.id), ['mouettes']);
+  assert.deepEqual(selectStays({ ...defaults, query: 'joliette' }).map((stay) => stay.id), ['bleu-blanc']);
+  for (const stay of stays) {
+    assert.ok(stay.quartier && stay.quartier.length > 0);
+    assert.ok(stay.walk && stay.walk.length > 0);
+    assert.ok(stay.note && stay.note.length > 0);
+  }
+});

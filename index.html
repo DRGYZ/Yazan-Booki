@@ -3,42 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Comparez les hôtels et auberges de Booki et découvrez quatre lieux à visiter à Marseille.">
-  <meta name="theme-color" content="#f7f5ed">
-  <title>Booki · Hébergements et activités à Marseille</title>
+  <meta name="description" content="Guide de séjour à Marseille : comparez neuf adresses choisies entre le Vieux-Port, le Panier et les Calanques.">
+  <meta name="theme-color" content="#f8f6f1">
+  <title>Booki · Carnet côtier à Marseille</title>
   <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="index.css">
-  <link rel="preload" href="assets/fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <script type="module" src="src/main.js"></script>
+  <link rel="stylesheet" href="index.css?v=3">
+  <link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script type="module" src="src/main.js?v=3"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
-  <header class="masthead shell">
-    <a class="wordmark" href="./" aria-label="Booki, accueil">booki</a>
-    <nav aria-label="Navigation principale">
-      <a href="#hebergement">Hébergements</a>
-      <a href="#activites">Activités</a>
-      <button type="button" class="favorite-nav" id="favorites-nav" aria-haspopup="dialog"><span aria-hidden="true">♡</span> Favoris <span id="favorite-count" hidden></span></button>
-    </nav>
+  <header class="masthead-wrap">
+    <div class="masthead shell">
+      <a class="wordmark" href="./" aria-label="Booki, accueil">booki <span class="wordmark-city">Marseille</span></a>
+      <nav aria-label="Navigation principale">
+        <a href="#hebergement">Adresses</a>
+        <a href="#activites">En ville</a>
+        <button type="button" class="favorite-nav" id="favorites-nav" aria-haspopup="dialog">
+          <span class="favorite-nav-heart" aria-hidden="true">♡</span>
+          <span>Carnet</span>
+          <span id="favorite-count" class="favorite-badge" hidden>0</span>
+        </button>
+      </nav>
+    </div>
   </header>
 
   <main id="main">
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <h1 id="hero-title">Dormir à<br>Marseille.</h1>
-        <p>Hôtels et auberges pour un séjour au bord de la Méditerranée.</p>
+        <p class="eyebrow">Guide de séjour · Rade de Marseille</p>
+        <h1 id="hero-title">Dormir au plus près des quais et des criques.</h1>
+        <p class="hero-lead">Neuf adresses choisies entre le Panier, la Corniche et Saint-Charles pour poser son sac et marcher en ville.</p>
         <form class="search" id="stay-search" role="search" action="#hebergement">
-          <label for="query">Chercher un hébergement</label>
+          <label class="sr-only" for="query">Chercher un hôtel, un quartier ou une auberge</label>
           <div class="search-control">
-            <input type="search" name="q" id="query" placeholder="Un hôtel, une auberge…" autocomplete="off">
-            <button type="submit">Rechercher <span aria-hidden="true">→</span></button>
+            <input type="search" name="q" id="query" placeholder="Quartier, hôtel, auberge…" autocomplete="off">
+            <button type="submit">Chercher</button>
           </div>
         </form>
       </div>
-      <figure class="hero-photo">
-        <img src="assets/photos/vieux-port.webp" srcset="assets/photos/vieux-port-small.webp 640w, assets/photos/vieux-port.webp 1200w" sizes="(max-width: 760px) 94vw, 57vw" width="1200" height="800" alt="Bateaux amarrés devant les façades du Vieux-Port de Marseille" fetchpriority="high">
-        <figcaption>Le Vieux-Port</figcaption>
-      </figure>
+
+      <div class="hero-collage" aria-label="Vues de Marseille">
+        <figure class="collage-main">
+          <img
+            src="assets/photos/vieux-port.webp"
+            srcset="assets/photos/vieux-port-small.webp 640w, assets/photos/vieux-port.webp 1200w"
+            sizes="(max-width: 760px) 62vw, 34vw"
+            width="1200"
+            height="800"
+            alt="Bateaux amarrés devant les façades du Vieux-Port de Marseille"
+            fetchpriority="high"
+          >
+          <figcaption>Vieux-Port · Quais &amp; ferry</figcaption>
+        </figure>
+        <div class="collage-side">
+          <figure class="collage-sub">
+            <img src="assets/photos/calanques.webp" width="640" height="460" alt="Falaises et criques des Calanques au bord de la mer" decoding="async">
+            <figcaption>Calanques</figcaption>
+          </figure>
+          <figure class="collage-sub">
+            <img src="assets/photos/garde.webp" width="640" height="460" alt="Notre-Dame-de-la-Garde au-dessus des toits de Marseille" decoding="async">
+            <figcaption>La Garde</figcaption>
+          </figure>
+        </div>
+      </div>
     </section>
 
     <section class="stays shell" id="hebergement" aria-labelledby="stays-title">
@@ -50,67 +78,102 @@
           <label class="filter"><input type="checkbox" name="type" value="auberge"> Auberge</label>
           <label class="filter"><input type="checkbox" name="type" value="chambre"> Chambre d’hôtes</label>
         </fieldset>
-        <label class="sort" for="sort">Trier par
-          <select id="sort">
-            <option value="recommended">Sélection Booki</option>
-            <option value="price-asc">Prix croissant</option>
-            <option value="price-desc">Prix décroissant</option>
-            <option value="rating">Meilleures notes</option>
-          </select>
-        </label>
-      </div>
-      <div class="section-heading">
-        <div>
-          <h2 id="stays-title">Hébergements à Marseille</h2>
-          <p id="results-count" role="status"></p>
+        <div class="toolbar-actions">
+          <button class="text-action" type="button" id="reset" hidden>Effacer</button>
+          <label class="sort" for="sort">
+            <span>Trier</span>
+            <select id="sort">
+              <option value="recommended">Sélection Booki</option>
+              <option value="price-asc">Prix croissant</option>
+              <option value="price-desc">Prix décroissant</option>
+              <option value="rating">Meilleures notes</option>
+            </select>
+          </label>
         </div>
-        <button class="text-action" type="button" id="reset" hidden>Effacer les filtres</button>
       </div>
+
+      <div class="section-heading">
+        <h2 id="stays-title">Adresses sélectionnées</h2>
+        <p id="results-count" role="status"></p>
+      </div>
+
       <div class="stay-grid" id="stays"></div>
+
       <div class="empty" id="empty-results" hidden>
-        <h3>Aucun hébergement trouvé</h3>
-        <p>Essayez un autre nom ou élargissez les filtres.</p>
-        <button class="text-action" id="reset-empty" type="button">Effacer les filtres</button>
+        <h3>Aucun hébergement ne correspond à cette sélection.</h3>
+        <p>Essayez un autre mot-clé ou réinitialisez les filtres.</p>
+        <button class="pill-action" id="reset-empty" type="button">Tout afficher</button>
       </div>
-      <noscript><p>Activez JavaScript pour parcourir les hébergements et enregistrer vos favoris.</p></noscript>
+      <noscript><p class="noscript-note">Activez JavaScript pour filtrer les adresses et enregistrer votre carnet.</p></noscript>
     </section>
 
     <section class="activities shell" id="activites" aria-labelledby="activities-title">
-      <h2 id="activities-title">À voir à Marseille</h2>
+      <div class="section-heading">
+        <h2 id="activities-title">Quatre sorties depuis votre hébergement</h2>
+        <p class="section-sub">À pied ou en navette</p>
+      </div>
       <div class="activity-grid">
-        <article>
-          <img src="assets/photos/vieux-port-small.webp" width="640" height="427" alt="Bateaux au Vieux-Port" loading="lazy" decoding="async">
-          <h3>Vieux-Port</h3>
+        <article class="activity-card">
+          <div class="activity-photo">
+            <img src="assets/photos/vieux-port-small.webp" width="640" height="427" alt="Bateaux au Vieux-Port" loading="lazy" decoding="async">
+          </div>
+          <div class="activity-body">
+            <p class="activity-kicker">Quais &amp; criée</p>
+            <h3>Vieux-Port</h3>
+            <p class="activity-note">Marché aux poissons le matin, traversée en ferry-boat.</p>
+          </div>
         </article>
-        <article>
-          <img src="assets/photos/pomegues.webp" width="640" height="460" alt="Le fort sur les rochers du Frioul" loading="lazy" decoding="async">
-          <h3>Fort de Pomègues</h3>
+        <article class="activity-card">
+          <div class="activity-photo">
+            <img src="assets/photos/pomegues.webp" width="640" height="460" alt="Le fort sur les rochers du Frioul" loading="lazy" decoding="async">
+          </div>
+          <div class="activity-body">
+            <p class="activity-kicker">Îles du Frioul</p>
+            <h3>Fort de Pomègues</h3>
+            <p class="activity-note">25 min de navette depuis le quai, sentiers de calcaire blanc.</p>
+          </div>
         </article>
-        <article>
-          <img src="assets/photos/calanques.webp" width="640" height="460" alt="Falaises des Calanques au bord de la mer" loading="lazy" decoding="async">
-          <h3>Parc national des Calanques</h3>
+        <article class="activity-card">
+          <div class="activity-photo">
+            <img src="assets/photos/calanques.webp" width="640" height="460" alt="Falaises des Calanques au bord de la mer" loading="lazy" decoding="async">
+          </div>
+          <div class="activity-body">
+            <p class="activity-kicker">Luminy · Morgiou</p>
+            <h3>Parc national des Calanques</h3>
+            <p class="activity-note">Bus B1 ou 21 depuis Castellane vers les criques.</p>
+          </div>
         </article>
-        <article>
-          <img src="assets/photos/garde.webp" width="640" height="460" alt="La basilique au-dessus des toits de Marseille" loading="lazy" decoding="async">
-          <h3>Notre-Dame-de-la-Garde</h3>
+        <article class="activity-card">
+          <div class="activity-photo">
+            <img src="assets/photos/garde.webp" width="640" height="460" alt="La basilique au-dessus des toits de Marseille" loading="lazy" decoding="async">
+          </div>
+          <div class="activity-body">
+            <p class="activity-kicker">Colline de la Garde</p>
+            <h3>Notre-Dame-de-la-Garde</h3>
+            <p class="activity-note">Vue à 360° sur la rade en montant par Vauban.</p>
+          </div>
         </article>
       </div>
     </section>
   </main>
 
   <footer class="footer shell">
-    <a class="wordmark" href="./" aria-label="Booki, accueil">booki</a>
-    <p>Projet OpenClassrooms · Tarifs et notes de démonstration</p>
+    <a class="wordmark" href="./" aria-label="Booki, accueil">booki <span class="wordmark-city">Marseille</span></a>
+    <p>Guide de séjour à Marseille · Projet OpenClassrooms</p>
     <a href="https://github.com/DRGYZ/Yazan-Booki">Code source ↗</a>
   </footer>
 
   <dialog class="favorites" id="favorites" aria-labelledby="favorites-title">
     <div class="favorites-heading">
-      <h2 id="favorites-title">Mes favoris</h2>
-      <button class="icon-button" id="close-favorites" type="button" aria-label="Fermer les favoris" autofocus>×</button>
+      <div>
+        <h2 id="favorites-title">Mon carnet à Marseille</h2>
+        <p class="favorites-sub" id="favorites-subtitle"></p>
+      </div>
+      <button class="icon-button" id="close-favorites" type="button" aria-label="Fermer le carnet" autofocus>×</button>
     </div>
     <div class="favorite-list" id="favorite-list"></div>
   </dialog>
   <p class="sr-only" id="favorite-status" role="status"></p>
+  <div class="toast-region" id="toast-region" aria-hidden="true"></div>
 </body>
 </html>
