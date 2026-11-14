@@ -972,6 +972,16 @@ body:has(dialog[open]) {
   .stay-photo {
     flex: 0 0 6.5rem;
   }
+  .stay-meta {
+    align-items: flex-start;
+  }
+  .stay-kicker,
+  .stay-details h3,
+  .favorite-row strong {
+    white-space: normal;
+    overflow: visible;
+    overflow-wrap: anywhere;
+  }
   .stay-walk {
     display: none;
   }
