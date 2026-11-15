@@ -2,7 +2,7 @@
 
 J’ai repris mon projet OpenClassrooms pour en faire un petit guide de séjour à Marseille. On peut chercher un hébergement, filtrer par type ou par prix, puis garder des adresses en favoris. Les photos viennent du projet d’origine.
 
-[Version du projet d’origine sur GitHub Pages](https://drgyz.github.io/Yazan-Booki/)
+[Voir le guide Booki sur GitHub Pages](https://drgyz.github.io/Yazan-Booki/)
 
 ![Recherche d’hébergements à Marseille dans Booki](docs/booki.webp)
 
